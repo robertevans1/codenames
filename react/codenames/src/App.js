@@ -31,6 +31,10 @@ function App() {
     };
 
     fetchButtonLabels();
+
+    const intervalId = setInterval(fetchButtonLabels, 5000); // Poll every 5 seconds
+
+    return () => clearInterval(intervalId);
   }, []); 
 
   if (loading) {
