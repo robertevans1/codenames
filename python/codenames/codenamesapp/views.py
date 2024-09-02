@@ -5,6 +5,7 @@ from rest_framework.views import APIView
 from django.shortcuts import get_object_or_404
 from .serializers import GameWordSerializer
 from .models import Game
+from rest_framework.decorators import api_view
 
 def index(request):
     return HttpResponse("Hello, world. You're at the codenames index.")
@@ -12,6 +13,15 @@ def index(request):
 class GameWordsView(APIView):
     def get(self, request, game_id):
         game = get_object_or_404(Game, pk=game_id)
-        words = game.words.all()
-        serializer = GameWordSerializer(words, many=True)
+        gamewords = game.gamewords.all()
+        serializer = GameWordSerializer(gamewords, many=True)
         return Response(serializer.data)
+
+@api_view(['GET'])
+def toggle_game_word(self, game_id, game_word_id):
+    game = get_object_or_404(Game, pk=game_id)
+    game_word = get_object_or_404(game.gamewords, pk=game_word_id)
+    game_word.toggle()
+    gamewords = game.gamewords.all()
+    serializer = GameWordSerializer(gamewords, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
