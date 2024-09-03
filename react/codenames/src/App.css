@@ -47,7 +47,7 @@
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* Creates 3 equal columns */
+  grid-template-columns: repeat(5, 1fr); /* Creates 5 equal columns */
   grid-gap: 10px; /* Adds space between grid items */
   justify-items: center; /* Centers items horizontally */
   align-items: center; /* Centers items vertically */

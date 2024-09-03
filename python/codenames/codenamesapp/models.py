@@ -30,9 +30,10 @@ class GameWord(models.Model):
 def create_game_words(sender, instance, created, **kwargs):
     if created:
         all_words = Word.objects.all()
-        initial_words = list(all_words.order_by('?')[:9])
+        initial_words = list(all_words.order_by('?')[:25])
+        extra= random.choice([['red'], ['blue']])
 
-        categorys = ['red', 'red', 'red', 'blue', 'blue', 'blue', 'neutral', 'neutral', 'black']
+        categorys = ['red'] * 8 + ['blue'] * 8 + extra + ['neutral'] * 7 + ['black']
         random.shuffle(categorys)
 
         # Create GameWord instances associated with this Game 
