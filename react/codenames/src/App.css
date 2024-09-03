@@ -107,3 +107,13 @@
 .toggle-switch:checked:before {
   transform: translateX(20px);
 }
+
+.btn {
+  padding: 10px 20px;
+  font-size: 1.2rem;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
