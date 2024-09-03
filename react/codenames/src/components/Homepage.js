@@ -1,11 +1,18 @@
+import '../App.css'; 
+
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import '../App.css'; // Assuming you will add custom styles
+import { createGame } from '../api/gameService';
 
 function Homepage() {
   
   const [gameId, setGameId] = useState('');
   const navigate = useNavigate();
+
+  const handleCreateGame = async () => {
+    const gameId = await createGame();
+    navigate(`/game/${gameId}`);
+  }
 
   const handleJoinGame = () => {
     if (gameId.trim()) {
@@ -19,7 +26,7 @@ function Homepage() {
     <div className="Homepage">
       <header className="App-header">
         <h1>Code Names</h1>
-        <button className="btn">Create New Game</button>
+        <button className="btn" onClick={handleCreateGame}>Create New Game</button>
         <p>or</p>
         <label htmlFor="game-id">Enter Game ID</label>
         <input 

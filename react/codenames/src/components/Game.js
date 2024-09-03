@@ -1,6 +1,7 @@
 import '../App.css';
 
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { fetchGameWords, toggleWordRevealed } from '../api/gameService'; // Import the function
 import WordButton from './WordButton';
 
@@ -26,6 +27,7 @@ class ButtonState {
 }
 
 function Game() {
+  const { game_id } = useParams();
   const [buttonStates, setButtonStates] = useState([]);
   const [isSpymaster, setIsSpymaster] = useState(false);
   const [loading, setLoading] = useState(true);
@@ -43,7 +45,7 @@ function Game() {
   useEffect(() => {
     const loadGameWords = async () => {
       try {
-        const data = await fetchGameWords(2);
+        const data = await fetchGameWords(game_id);
         console.log(`is spymaster in use effect: ${isSpymaster}`);
         updateGameState(data);
       } catch (error) {
@@ -78,7 +80,7 @@ function Game() {
                 key={index}
                 buttonState={state}
                 onClicked={async () => {
-                  const data = await toggleWordRevealed(2, state.game_word_id);
+                  const data = await toggleWordRevealed(game_id, state.game_word_id);
                   updateGameState(data);
                 }}
               />

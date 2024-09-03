@@ -1,4 +1,5 @@
 const API_URL = 'http://localhost:8000/games/';
+const CREATE_GAME_URL = 'http://localhost:8000/games/create/';
 
 // Function to fetch data from the API
 export async function fetchGameWords(gameId) {
@@ -27,6 +28,20 @@ export async function toggleWordRevealed(gameId, gameWordId) {
       console.error('Failed to fetch game words:', error);
       throw error; // Re-throw the error to be handled by the caller
   }
+}
+
+export async function createGame() {
+    try {
+        const response = await fetch(CREATE_GAME_URL);
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+        const data = await response.json();
+        return data.id;
+    } catch (error) {
+        console.error('Failed to create game:', error);
+        throw error; // Re-throw the error to be handled by the caller
+    }
 }
 
 // Function to deserialize API response

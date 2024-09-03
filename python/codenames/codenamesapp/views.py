@@ -25,3 +25,12 @@ def toggle_game_word(self, game_id, game_word_id):
     gamewords = game.gamewords.all()
     serializer = GameWordSerializer(gamewords, many=True)
     return Response(serializer.data, status=status.HTTP_200_OK)
+
+@api_view(['GET'])
+def create_game(self):
+    game = Game.objects.create()
+    game.save()
+    response_data = {
+        'id': game.id
+    }
+    return Response(response_data, status=status.HTTP_201_CREATED)
