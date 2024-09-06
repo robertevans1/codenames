@@ -1,5 +1,6 @@
-const API_URL = 'http://localhost:8000/games/';
-const CREATE_GAME_URL = 'http://localhost:8000/games/create/';
+const BASE_URL = 'codenames-production-f422.up.railway.app';
+const API_URL = BASE_URL + '/games/';
+const CREATE_GAME_URL = BASE_URL + '/games/create/';
 
 // Function to fetch data from the API
 export async function fetchGameWords(gameId) {
