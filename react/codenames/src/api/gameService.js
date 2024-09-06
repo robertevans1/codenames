@@ -1,4 +1,4 @@
-const BASE_URL = 'http://codenames.railway.internal';
+const BASE_URL = 'https://codenames-frontend-production.up.railway.app';
 const API_URL = BASE_URL + '/games/';
 const CREATE_GAME_URL = BASE_URL + '/games/create/';
 

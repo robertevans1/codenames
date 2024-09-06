@@ -26,8 +26,7 @@ SECRET_KEY = 'django-insecure-%(4!b_#a4$yfhpjrmuyywjpg)v#0%x2)=4q6yb9ya29@j#z&qr
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'codenames-production-f422.up.railway.app',
-    'codenames.railway.internal'
+    'https://codenames-production-f422.up.railway.app',
 ]
 
 
@@ -58,10 +57,10 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "http://codenames-frontend.railway.internal"
+    "https://codenames-frontend-production.up.railway.app"
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', "http://codenames-frontend.railway.internal"]
+CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', "https://codenames-frontend-production.up.railway.app"]
 
 ROOT_URLCONF = 'codenames.urls'
 
