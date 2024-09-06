@@ -1,6 +1,6 @@
 import '../App.css';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchGameWords, toggleWordRevealed } from '../api/gameService'; // Import the function
 import WordButton from './WordButton';
@@ -33,20 +33,19 @@ function Game() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
-  const updateGameState = (data) => {
+  const updateGameState = useCallback((data) => {
     setButtonStates(data.map(item => new ButtonState({ word: item.word,
       revealed: item.revealed,
       category: item.category, 
       for_spymaster: isSpymaster,
       game_word_id: item.id
     } )));
-  }
+  }, [isSpymaster])
 
   useEffect(() => {
     const loadGameWords = async () => {
       try {
         const data = await fetchGameWords(game_id);
-        console.log(`is spymaster in use effect: ${isSpymaster}`);
         updateGameState(data);
       } catch (error) {
         setError(error.message);
@@ -60,7 +59,7 @@ function Game() {
     const intervalId = setInterval(loadGameWords, 5000); // Poll every 5 seconds
 
      return () => clearInterval(intervalId);
-  }, [isSpymaster]);
+  }, [game_id, updateGameState]);
 
   if (loading) {
     return <div>Loading...</div>;

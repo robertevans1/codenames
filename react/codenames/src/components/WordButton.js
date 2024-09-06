@@ -1,5 +1,4 @@
 import './WordButton.css';
-import toggleWordRevealed from '../api/gameService';
 
 function getButtonStatus(category, revealed, for_spymaster) {
     const status = [
