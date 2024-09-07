@@ -59,10 +59,15 @@ MIDDLEWARE = [
 
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:3000",
-    "https://codenames-frontend-production.up.railway.app"
+    "https://codenames-frontend-production.up.railway.app",
+    'https://codenames-production-f422.up.railway.app'
 ]
 
-CSRF_TRUSTED_ORIGINS = ['http://localhost:3000', "https://codenames-frontend-production.up.railway.app"]
+CSRF_TRUSTED_ORIGINS = [
+    'http://localhost:3000',
+    "https://codenames-frontend-production.up.railway.app",
+    'https://codenames-production-f422.up.railway.app'
+]
 
 ROOT_URLCONF = 'codenames.urls'
 
