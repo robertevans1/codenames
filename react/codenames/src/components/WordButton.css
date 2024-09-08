@@ -1,57 +1,67 @@
 /* Base button style */
 .button {
-    padding: 10px;
-    font-size: 16px;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Centers the text inside each button */
+    font-size: calc(3vmin); /* Text size that adjusts with the viewport */
+    border: none;
+    background-color: lightblue; /* Example button background color */
+    border-radius: 5px;
     cursor: pointer;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    height: 100%; /* Ensure the button takes up its entire grid cell */
+    width: 100%; 
+    border: calc(10% * 1vw) solid #f0f0f0; /* Light grey border for not revealed */
   }
   
   /* Status styles */
   .revealed-red {
-    border: 30px solid #f12424; 
+    border: #f12424; 
     background-color: #f12424; /* Light pink for red */
     color: #FFF;
   }
   
   .revealed-blue {
-    border: 30px solid #0d20ef;
+    border: #0d20ef;
     background-color: #0d20ef; /* Light blue for blue */
     color: #FFF;
   }
   
   .revealed-black {
-    border: 30px solid #222222;
+    border: #222222;
     background-color: #222222; /* Dark color for black */
     color: #FFF;
   }
 
   .revealed-neutral {
-    border: 30px solid #ecc734;
+    border: #ecc734;
     background-color: #ecc734; /* Neutral color */
   }
   
   .not_revealed-for_spymaster-red {
-    border: 30px solid #f12424; /* Light pink border for red */
+    border: #f12424; /* Light pink border for red */
     background-color: #FFC0CB; /* Light pink for red */
   }
   
   .not_revealed-for_spymaster-blue {
-    border: 30px solid #0d20ef; /* Light blue border for blue */
+    border: #0d20ef; /* Light blue border for blue */
     background-color: #ADD8E6; /* Light blue for blue */
   }
   
   .not_revealed-for_spymaster-black {
-    border: 30px solid #222222; /* Dark color border for black */
+    border: #222222; /* Dark color border for black */
     background-color: #555555;
     color: #FFF /* Dark color for black */
   }
   
   .not_revealed-for_spymaster-neutral {
-    border: 30px solid #ecc734; /* Neutral color border */
+    border: #ecc734; /* Neutral color border */
     background-color: #ede6cb; /* Neutral color */
   }
 
   .not_revealed {
-    border: 30px solid #f0f0f0; /* Light grey border for not revealed */
+    border: #f0f0f0; /* Light grey border for not revealed */
     background-color: #f0f0f0; /* Light grey for not revealed */
   }
 

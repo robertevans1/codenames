@@ -78,7 +78,7 @@ function Game() {
               <WordButton
                 key={index}
                 buttonState={state}
-                onClicked={async () => {
+                onClicked={async () => {  
                   const data = await toggleWordRevealed(game_id, state.game_word_id);
                   updateGameState(data);
                 }}

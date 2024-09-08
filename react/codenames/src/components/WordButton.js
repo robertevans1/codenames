@@ -18,7 +18,7 @@ function WordButton({ buttonState, onClicked}) {
     let buttonStatus = getButtonStatus(category, revealed, for_spymaster);
     return (
         <button className={`button ${buttonStatus}`} onClick={onClicked}>
-        {word}
+          {word}
         </button>
     );
 }

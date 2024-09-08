@@ -42,27 +42,20 @@
   display: flex;
   align-items: flex-start; /* Align items at the start of the cross axis */
   gap: 20px; /* Space between the grid and the toggle switch */
-  padding: 20px; /* Optional: Add some padding around the container */
+  height: 100vh; /* The container will take up the full viewport height */
+  width: 100vw;
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* Creates 5 equal columns */
-  grid-gap: 10px; /* Adds space between grid items */
-  justify-items: center; /* Centers items horizontally */
-  align-items: center; /* Centers items vertically */
-  height: 80vh; /* Full viewport height */
-  width: 80vw; /* Full viewport width */
-  box-sizing: border-box; /* Includes padding and border in the element's width and height */
-}
-
-
-.grid-container button {
-  width: 100%; /* Button takes full width of grid cell */
-  height: 100%; /* Button takes full height of grid cell */
-  padding: 20px; /* Optional: Add padding for better visual */
-  box-sizing: border-box; /* Ensure padding doesn't affect the size */
-  
+  grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
+  grid-template-rows: repeat(5, 1fr);    /* 5 equal rows */
+  gap: 5px; /* Adjust the gap between buttons as needed */
+  height: 100%; /* The grid will take up the full height of the container */
+  width: 100%; /* The grid will take up the full width of the container */
+  padding: 50px; /* Add padding around the grid */
+  justify-content: center; /* Center the grid horizontally */
+  align-items: center; /* Center the grid vertically */
 }
 
 .toggle-container {
