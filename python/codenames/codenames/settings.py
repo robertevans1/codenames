@@ -27,7 +27,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = [
     'codenames-production-f422.up.railway.app',
-    'localhost:8000'
+    'localhost'
 ]
 
 

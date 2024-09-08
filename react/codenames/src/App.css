@@ -62,7 +62,7 @@
   height: 100%; /* Button takes full height of grid cell */
   padding: 20px; /* Optional: Add padding for better visual */
   box-sizing: border-box; /* Ensure padding doesn't affect the size */
-  font-size: 1.5rem; /* Adjust the font size if needed */
+  
 }
 
 .toggle-container {

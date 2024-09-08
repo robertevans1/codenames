@@ -1,4 +1,4 @@
-const BASE_URL = 'https://codenames-production-f422.up.railway.app';
+const BASE_URL = process.env.REACT_APP_BASE_URL
 const API_URL = BASE_URL + '/games/';
 const CREATE_GAME_URL = BASE_URL + '/games/create/';
 
@@ -33,6 +33,7 @@ export async function toggleWordRevealed(gameId, gameWordId) {
 
 export async function createGame() {
     try {
+        console.log('Creating a new game at URL:', CREATE_GAME_URL);
         const response = await fetch(CREATE_GAME_URL);
         if (!response.ok) {
             throw new Error('Network response was not ok');
