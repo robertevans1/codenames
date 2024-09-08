@@ -40,29 +40,46 @@
 /* Styles for the container holding both the grid and the toggle switch */
 .app-container {
   display: flex;
-  align-items: flex-start; /* Align items at the start of the cross axis */
-  gap: 20px; /* Space between the grid and the toggle switch */
-  height: 100vh; /* The container will take up the full viewport height */
-  width: 100vw;
+  flex-direction: column;
+  gap: 10px; /* Space between the grid and the toggle switch */
+  width: 100%;
+  height: 100%;
+}
+
+.child {
+  padding: 20px;
+  box-sizing: border-box;
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 5 equal columns */
-  grid-template-rows: repeat(5, 1fr);    /* 5 equal rows */
-  gap: 5px; /* Adjust the gap between buttons as needed */
-  height: 100%; /* The grid will take up the full height of the container */
-  width: 100%; /* The grid will take up the full width of the container */
-  padding: 50px; /* Add padding around the grid */
-  justify-content: center; /* Center the grid horizontally */
-  align-items: center; /* Center the grid vertically */
+  grid-auto-rows: 1fr;    /* 5 equal rows */
+  gap: 5px; 
 }
 
 .toggle-container {
   display: flex;
   align-items: center;
-  margin-bottom: 10px; /* Add some space between the toggle and the grid */
+  margin-bottom: 10px; 
 }
+
+@media (min-width: 600px) {
+  .app-container {
+    flex-direction: row;
+  }
+
+  .grid-container {
+    flex-grow: 1;
+    flex-basis: 0;
+  }
+
+  .toggle-container {
+    width: min-content;
+    flex-shrink: 0;
+  }
+}
+
 
 .toggle-label {
   margin-right: 10px; /* Space between label and switch */

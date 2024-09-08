@@ -17,9 +17,13 @@ function WordButton({ buttonState, onClicked}) {
     console.log(`state is ${buttonState}`);
     let buttonStatus = getButtonStatus(category, revealed, for_spymaster);
     return (
-        <button className={`button ${buttonStatus}`} onClick={onClicked}>
+      <button className='grid-item' onClick={onClicked}>
+        <div className={`grid-item-content ${buttonStatus}`}>
+          <div className='border-test'>
           {word}
-        </button>
+          </div>
+        </div>
+      </button>
     );
 }
 

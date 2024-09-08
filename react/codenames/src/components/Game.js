@@ -70,10 +70,10 @@ function Game() {
   }
 
   return (
-    <div className="Game">
+    <div class="Game">
       <header className="App-header">
-      <div className="app-container">
-          <div className="grid-container">
+      <div class="app-container">
+          <div class="child grid-container">
             {buttonStates.map((state, index) => (
               <WordButton
                 key={index}
@@ -85,8 +85,8 @@ function Game() {
               />
             ))}
           </div>
-          <div className="toggle-container">
-            <label className="toggle-label">Spymaster?</label>
+          <div className="child toggle-container">
+            <label className="toggle-label">Reveal Colours? (For Spymasters only)</label>
             <input
               type="checkbox"
               className="toggle-switch"
