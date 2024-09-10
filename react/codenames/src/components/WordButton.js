@@ -18,8 +18,8 @@ function WordButton({ buttonState, onClicked}) {
     let buttonStatus = getButtonStatus(category, revealed, for_spymaster);
     return (
       <button className='grid-item' onClick={onClicked}>
-        <div className={`grid-item-content ${buttonStatus}`}>
-          <div className='border-test'>
+        <div className={`card-outer outer-${buttonStatus}`}>
+          <div className={`card-inner ${buttonStatus}`}>
           {word}
           </div>
         </div>
