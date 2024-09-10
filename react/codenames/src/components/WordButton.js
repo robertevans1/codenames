@@ -19,7 +19,7 @@ function WordButton({ buttonState, onClicked}) {
     return (
       <button className='grid-item' onClick={onClicked}>
         <div className={`card-outer outer-${buttonStatus}`}>
-          <div className={`card-inner ${buttonStatus}`}>
+          <div className={`card-inner ${buttonStatus} text`}>
           {word}
           </div>
         </div>
