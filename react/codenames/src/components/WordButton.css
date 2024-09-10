@@ -64,13 +64,6 @@
       background-color: #f0f0f0; /* Light grey for not revealed */
     }
 
-    .text {
-      display: block;
-      font-size: clamp(1rem, 2vw, 4rem);
-      max-width: 100%;
-      white-space: nowrap;
-    }
-
   .card-inner {
     display: flex;
     width: 100%;
