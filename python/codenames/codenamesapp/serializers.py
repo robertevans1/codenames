@@ -12,5 +12,9 @@ class GameWordSerializer(serializers.ModelSerializer):
         model = GameWord
         fields = ['id', 'word', 'revealed', 'category']
 
+class DistancesSerializer(serializers.Serializer):
+    word = serializers.CharField()
+    distance = serializers.FloatField()
+
     
 
