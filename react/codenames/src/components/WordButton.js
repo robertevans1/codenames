@@ -11,7 +11,30 @@ function getButtonStatus(category, revealed, for_spymaster) {
   return status;
 }
 
-function WordButton({ buttonState, onClicked }) {
+export class ButtonState {
+  constructor({
+    word, 
+    revealed,
+    category, 
+    for_spymaster,
+    game_word_id,
+    rating,
+  } = {}) {
+    this.word = word;
+    this.revealed = revealed;
+    this.category = category;
+    this.for_spymaster = for_spymaster;
+    this.game_word_id = game_word_id;
+    this.rating = rating;
+  }
+
+  // add print method
+  toString() {
+    console.log(`Word: ${this.word}, Revealed: ${this.revealed}, Category: ${this.category}, For Spymaster: ${this.for_spymaster}`);
+  }
+}
+
+export function WordButton({ buttonState, onClicked }) {
   const { word, revealed, category, for_spymaster } = buttonState;
   let buttonStatus = getButtonStatus(category, revealed, for_spymaster);
 
@@ -74,5 +97,3 @@ function WordButton({ buttonState, onClicked }) {
     </button>
   );
 }
-
-export default WordButton;

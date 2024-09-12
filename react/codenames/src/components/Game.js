@@ -3,28 +3,7 @@ import '../App.css';
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchGameWords, toggleWordRevealed, rateClue } from '../api/gameService'; // Import the function
-import WordButton from './WordButton';
-
-class ButtonState {
-  constructor({
-    word, 
-    revealed,
-    category, 
-    for_spymaster,
-    game_word_id,
-  } = {}) {
-    this.word = word;
-    this.revealed = revealed;
-    this.category = category;
-    this.for_spymaster = for_spymaster;
-    this.game_word_id = game_word_id;
-  }
-
-  // add print method
-  toString() {
-    console.log(`Word: ${this.word}, Revealed: ${this.revealed}, Category: ${this.category}, For Spymaster: ${this.for_spymaster}`);
-  }
-}
+import {WordButton, ButtonState} from './WordButton';
 
 function Game() {
   const { game_id } = useParams();
@@ -60,7 +39,7 @@ function Game() {
     const intervalId = setInterval(loadGameWords, 5000); // Poll every 5 seconds
 
      return () => clearInterval(intervalId);
-  }, [game_id, updateGameState]);
+  }, [game_id, updateGameState, clueRatings]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -102,10 +81,11 @@ function Game() {
             </div>
             <div className = "clue-container">
               <input type="text" placeholder="Enter your clue here" />
+              <input type="number" placeholder="How many words?" />
               <button onClick={async () => {
                 const clue = document.querySelector('input[type="text"]').value;
                 const ratings = await rateClue(game_id, clue);
-                console.log(ratings);
+                setClueRatings(ratings);
               }}>Submit Clue</button>
             </div>
           </div>
