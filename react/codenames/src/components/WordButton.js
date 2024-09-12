@@ -8,13 +8,11 @@ function getButtonStatus(category, revealed, for_spymaster) {
     for_spymaster || revealed ? category : ''
   ].filter(Boolean).join('-');
 
-  console.log(`Button status is: ${status}`);
   return status;
 }
 
 function WordButton({ buttonState, onClicked }) {
   const { word, revealed, category, for_spymaster } = buttonState;
-  console.log(`state is ${buttonState}`);
   let buttonStatus = getButtonStatus(category, revealed, for_spymaster);
 
   // Create refs for container and text elements

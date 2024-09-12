@@ -1,6 +1,9 @@
 const BASE_URL = process.env.REACT_APP_BASE_URL
 const API_URL = BASE_URL + '/games/';
 const CREATE_GAME_URL = BASE_URL + '/games/create/';
+function getRateClueUrl(gameId) {
+    return API_URL + gameId + '/rate_clue';
+}
 
 // Function to fetch data from the API
 export async function fetchGameWords(gameId) {
@@ -46,6 +49,13 @@ export async function createGame() {
     }
 }
 
+export async function rateClue(gameId, clue_word, rating) {
+    const url = getRateClueUrl(gameId) + '?clue=' + clue_word;
+    const response = await fetch(url);
+    const data = await response.json();
+    return deserializeClueRatings(data);
+}
+
 // Function to deserialize API response
 function deserializeGameWords(data) {
   // Assuming the data is an array of objects
@@ -55,4 +65,11 @@ function deserializeGameWords(data) {
     revealed: item.revealed,
     category: item.category,
   }));
+}
+
+function deserializeClueRatings(data) {
+    return data.map(item => ({
+        gameWordId: item.game_word_id,
+        score: item.distance,
+    }));
 }

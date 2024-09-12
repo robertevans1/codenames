@@ -2,7 +2,7 @@ import '../App.css';
 
 import React, { useState, useEffect, useCallback } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchGameWords, toggleWordRevealed } from '../api/gameService'; // Import the function
+import { fetchGameWords, toggleWordRevealed, rateClue } from '../api/gameService'; // Import the function
 import WordButton from './WordButton';
 
 class ButtonState {
@@ -32,6 +32,7 @@ function Game() {
   const [isSpymaster, setIsSpymaster] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
+  const [clueRatings, setClueRatings] = useState([]);
 
   const updateGameState = useCallback((data) => {
     setButtonStates(data.map(item => new ButtonState({ word: item.word,
@@ -73,7 +74,7 @@ function Game() {
     <div class="Game">
       <header className="App-header">
       <div class="app-container">
-          <div class="child grid-container">
+          <div class="grid-container">
             {buttonStates.map((state, index) => (
               <WordButton
                 key={index}
@@ -85,18 +86,28 @@ function Game() {
               />
             ))}
           </div>
-          <div className="child toggle-container">
-            <label className="toggle-label">Reveal Colours? (For Spymasters only)</label>
-            <input
-              type="checkbox"
-              className="toggle-switch"
-              checked={isSpymaster}
-              onChange={(e) => {
-                const newSpymasterStatus = e.target.checked;
-                console.log(`new status is ${newSpymasterStatus}`);
-                setIsSpymaster(newSpymasterStatus);
-              }}
-            />
+          <div className="settings-container">
+            <div className="toggle-container">
+              <label className="toggle-label">Reveal Colours? (For Spymasters only)</label>
+              <input
+                type="checkbox"
+                className="toggle-switch"
+                checked={isSpymaster}
+                onChange={(e) => {
+                  const newSpymasterStatus = e.target.checked;
+                  console.log(`new status is ${newSpymasterStatus}`);
+                  setIsSpymaster(newSpymasterStatus);
+                }}
+              />
+            </div>
+            <div className = "clue-container">
+              <input type="text" placeholder="Enter your clue here" />
+              <button onClick={async () => {
+                const clue = document.querySelector('input[type="text"]').value;
+                const ratings = await rateClue(game_id, clue);
+                console.log(ratings);
+              }}>Submit Clue</button>
+            </div>
           </div>
         </div>
       </header>

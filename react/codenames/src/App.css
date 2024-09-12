@@ -53,9 +53,9 @@
   gap: 5px; 
 }
 
-.toggle-container {
+.settings-container {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   margin-bottom: 10px; 
 }
 
@@ -69,7 +69,7 @@
     flex-basis: 0;
   }
 
-  .toggle-container {
+  .settings-container {
     width: min-content;
     flex-shrink: 0;
   }
