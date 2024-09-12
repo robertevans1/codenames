@@ -33,10 +33,24 @@ class WordEmbeddings:
             distances.sort(key=lambda x: x.distance)
         return distances
     
+    def game_words_distance_to_clue(self, game_words, clue_word):
+        # check all test words are in dictionary
+        distances = []
+        for game_word in game_words:
+            word = game_word.word.word.lower()
+            if word not in self.embeddings_dict:
+                raise ValueError(f"Word {word} not in embeddings dictionary")
+
+            distance = self.find_distance(self.embeddings_dict[clue_word], self.embeddings_dict[word])
+            distances.append(WordAndDistance(game_word, distance))
+            distances.sort(key=lambda x: x.distance)
+
+        return distances
+    
 class WordAndDistance:  
     def __init__(self, word, distance):
         self.word = word
         self.distance = distance
 
     def __str__(self):
-        return f"Word: {self.word}, Distance: {self.distance}"
+        return f"Word: {self.word.word}, Distance: {self.distance}"

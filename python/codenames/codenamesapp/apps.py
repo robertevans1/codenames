@@ -2,7 +2,6 @@ from django.apps import AppConfig
 
 from .word_embedding_data import WordEmbeddingData
 
-
 class CodenamesappConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
     name = 'codenamesapp'

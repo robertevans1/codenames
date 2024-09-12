@@ -46,8 +46,8 @@ class RateClueView(APIView):
             return Response(status=status.HTTP_400_BAD_REQUEST)
         
         wordEmbeddings = WordEmbeddings()
-        word_list =  word_list = game.gamewords.all().values_list('word__word', flat=True)
-        distances = wordEmbeddings.distance_to_clue(word_list, clue)
+        word_list =  word_list = game.gamewords.all()
+        distances = wordEmbeddings.game_words_distance_to_clue(word_list, clue)
         serializer = DistancesSerializer(distances, many=True)
         return Response(serializer.data)
 
