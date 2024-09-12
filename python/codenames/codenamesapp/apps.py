@@ -30,7 +30,7 @@ class CodenamesappConfig(AppConfig):
 
 # Paths
 file_path = '/data/glove.6B.300d.txt'
-zip_url = 'http://nlp.stanford.edu/data/glove.6B.zip'
+zip_url = 'https://zenodo.org/records/4925376/files/glove.6B.300d.zip'
 zip_path = '/data/glove.6B.zip'
 
 def download_file(url, dest_path):
