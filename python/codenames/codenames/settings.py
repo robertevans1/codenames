@@ -11,6 +11,10 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+import yaml
+from decouple import config
+
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -18,6 +22,23 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.1/howto/deployment/checklist/
+
+# Get the configuration file path from the environment
+
+config_file_path = config('CONFIG_FILE_PATH')
+print('config_file_path:', config_file_path)
+
+if config_file_path and os.path.exists(config_file_path):
+    with open(config_file_path, 'r') as file:
+        config = yaml.safe_load(file)
+else:
+    raise Exception("Configuration file not found or invalid")
+
+EMBEDDINGS_URL=config.get('EMBEDDINGS_URL')
+EMBEDDINGS_FILE=config.get('EMBEDDINGS_FILE')
+ASSETS_DIR=config.get('ASSETS_DIR')
+
+print('config:', config)
 
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-%(4!b_#a4$yfhpjrmuyywjpg)v#0%x2)=4q6yb9ya29@j#z&qr'
@@ -140,3 +161,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+

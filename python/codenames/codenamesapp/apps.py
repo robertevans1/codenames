@@ -5,6 +5,7 @@ import zipfile
 import requests
 
 from .word_embedding_data import WordEmbeddingData
+from codenames.settings import EMBEDDINGS_URL, ASSETS_DIR, EMBEDDINGS_FILE
 
 class CodenamesappConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
@@ -17,22 +18,27 @@ class CodenamesappConfig(AppConfig):
             print(f'{file_path} does not exist. Downloading and extracting the zip file.')
             
             # Download the zip file
-            download_file(zip_url, zip_path)
+            download_file(zip_url, file_path)
             
             # Extract the zip file
-            extract_zip(zip_path, '/data')
+            # extract_zip(zip_path, '/data')
             
             print('Download and extraction complete.')
         else:
             print(f'{file_path} already exists.')
 
-        print_file_paths('/data')
-        word_embedding_data.load_data("/data/glove.6B.300d.txt")
+        print_file_paths(file_dir)
+        word_embedding_data.load_data(file_path)
 
 # Paths
-file_path = '/data/glove.6B.300d.txt'
-zip_url = 'https://zenodo.org/records/4925376/files/glove.6B.300d.zip'
-zip_path = '/data/glove.6B.300d.zip'
+file_dir = ASSETS_DIR
+file_path = f'{file_dir}{EMBEDDINGS_FILE}'
+zip_url = EMBEDDINGS_URL
+
+print(f'File Directory: {file_dir}')
+print(f'File Path: {file_path}')
+print(f'Zip URL: {zip_url}')
+#zip_path = f'{file_dir}glove.6B.300d.zip'
 
 def download_file(url, dest_path):
     response = requests.get(url)
